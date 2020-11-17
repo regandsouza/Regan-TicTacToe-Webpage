@@ -34,7 +34,7 @@ class HomeView extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 16.0),
                     child: Container(
                       width: 40,
-                      height: 475,
+                      height: 522,
                       color: Colors.grey[300],
                     ),
                   ),
@@ -49,3 +49,5 @@ class HomeView extends StatelessWidget {
     );
   }
 }
+
+

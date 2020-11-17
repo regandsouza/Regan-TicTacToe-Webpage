@@ -17,8 +17,8 @@ class CallToAction extends StatelessWidget {
         html.window.location.href = "https://twitter.com/elonmusk/status/1325450416562208768";
       },
       child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 60,
-          vertical: 15,
+          padding: const EdgeInsets.symmetric(horizontal: 50,
+          vertical: 12,
           ),
           child: Text(
             title,
@@ -29,8 +29,8 @@ class CallToAction extends StatelessWidget {
             ),
           ),
           decoration: BoxDecoration(
-            color: Color.fromRGBO(58,78,236,46),
-            borderRadius: BorderRadius.circular(5),
+            color: Color.fromRGBO(36,162,252,2),
+            borderRadius: BorderRadius.circular(4),
           ),
     ),
     );

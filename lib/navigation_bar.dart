@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:regan_web/call_to_action.dart';
 import 'dart:html' as html;
 
 class NavigationBar extends StatelessWidget {
@@ -19,19 +20,30 @@ class NavigationBar extends StatelessWidget {
             ),
           ),
 
-
-      FlatButton(
-        child: Text('Other projects',
-          style: TextStyle(
-            fontSize: 17.4,
-            fontWeight: FontWeight.w500,
-            color: Colors.black,
+          FlatButton(
+            onPressed: (){
+              html.window.location.href = "https://github.com/regandsouza";
+            },
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 70,
+                vertical: 15,
+              ),
+              child: Text(
+                'Other projects',
+                style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.black,
+                ),
+              ),
+            ),
+            shape: RoundedRectangleBorder(
+                side: BorderSide(color: Colors.black54, width: 1.6)
+            ),
           ),
-        ),
-        onPressed: (){
-          html.window.location.href = "https://github.com/regandsouza";
-        },
-      ),
+
+
+
 
 
         ],

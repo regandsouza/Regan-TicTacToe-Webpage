@@ -1,5 +1,4 @@
 
-
 //hte tic tac toe game is studied from a youtube video
 
 import 'dart:math';
@@ -7,13 +6,24 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:regan_web/game_button.dart';
 import 'package:regan_web/custom.dart';
+import 'global.dart' as global;
 
 class HomePage extends StatefulWidget {
+
+  int value;
+  HomePage({Key key, @required this.value}) : super(key: key);
+
   @override
-  _HomePageState createState() => new _HomePageState();
+  _HomePageState createState() => new _HomePageState(value);
 }
 
 class _HomePageState extends State<HomePage> {
+
+  int value;
+
+  _HomePageState(this.value);
+
+
   List<GameButton> buttonsList;
   var player1;
   var player2;
@@ -45,16 +55,48 @@ class _HomePageState extends State<HomePage> {
     return gameButtons;
   }
 
+
+  getColorA(){
+    if(global.pass==0) {
+      return Colors.black;
+    }
+    else if(global.pass==1){
+      return Colors.pinkAccent;
+    }
+    else if(global.pass==2){
+      return Colors.blue[800];
+    }
+    else if(global.pass==3){
+      return Colors.orangeAccent[700];
+    }
+  }
+
+  getColorB(){
+    if(global.pass==0) {
+      return Colors.orange[800];
+    }
+    else if(global.pass==1){
+      return Colors.yellow;
+    }
+    else if(global.pass==2){
+      return Colors.tealAccent[700];
+    }
+    else if(global.pass==3){
+      return Colors.green[500];
+    }
+  }
+
+
   void playGame(GameButton gb) {
     setState(() {
       if (activePlayer == 1) {
         gb.text = "X";
-        gb.bg = Colors.blue;
+        gb.bg = getColorA();
         activePlayer = 2;
         player1.add(gb.id);
       } else {
-        gb.text = "0";
-        gb.bg = Colors.orangeAccent;
+          gb.text = 'O';
+          gb.bg = getColorB();
         activePlayer = 1;
         player2.add(gb.id);
       }
@@ -64,7 +106,8 @@ class _HomePageState extends State<HomePage> {
         if (buttonsList.every((p) => p.text != "")) {
           showDialog(
               context: context,
-              builder: (_) => new CustomDialog("Game Tied",
+              builder: (_) =>
+              new CustomDialog("Game Tied",
                   "Try Again", resetGame));
         } else {
           activePlayer == 2 ? autoPlay() : null;
@@ -83,11 +126,10 @@ class _HomePageState extends State<HomePage> {
     }
 
     var r = new Random();
-    var randIndex = r.nextInt(emptyCells.length-1);
+    var randIndex = r.nextInt(emptyCells.length - 1);
     var cellID = emptyCells[randIndex];
-    int i = buttonsList.indexWhere((p)=> p.id == cellID);
+    int i = buttonsList.indexWhere((p) => p.id == cellID);
     playGame(buttonsList[i]);
-
   }
 
   int checkWinner() {
@@ -158,12 +200,14 @@ class _HomePageState extends State<HomePage> {
       if (winner == 1) {
         showDialog(
             context: context,
-            builder: (_) => new CustomDialog("YOU WON",
+            builder: (_) =>
+            new CustomDialog("YOU WON",
                 "Try again", resetGame));
       } else {
         showDialog(
             context: context,
-            builder: (_) => new CustomDialog("YOU LOST",
+            builder: (_) =>
+            new CustomDialog("YOU LOST",
                 "Try again, you got it this time", resetGame));
       }
     }
@@ -178,10 +222,11 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        backgroundColor: Colors.grey[200],
+        backgroundColor: Colors.white,
         body: new Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -199,7 +244,8 @@ class _HomePageState extends State<HomePage> {
                     crossAxisSpacing: 12.0,
                     mainAxisSpacing: 12.0),
                 itemCount: buttonsList.length,
-                itemBuilder: (context, i) => new SizedBox(
+                itemBuilder: (context, i) =>
+                new SizedBox(
                   width: 10.0,
                   height: 10.0,
                   child: new RaisedButton(
@@ -212,6 +258,8 @@ class _HomePageState extends State<HomePage> {
                       style: new TextStyle(
                           color: Colors.white, fontSize: 20.0),
                     ),
+                    shape: RoundedRectangleBorder(
+                        side: BorderSide(color: Colors.black)),
                     color: buttonsList[i].bg,
                     disabledColor: buttonsList[i].bg,
                   ),
@@ -222,13 +270,15 @@ class _HomePageState extends State<HomePage> {
             SizedBox(height: 4,),
 
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 50.0),
+              padding: const EdgeInsets.symmetric(horizontal: 60.0),
               child: new RaisedButton(
                 child: new Text(
-                  "Play Again",
-                  style: new TextStyle(color: Colors.white, fontSize: 20.0),
+                  "New Game",
+                  style: new TextStyle(color: Colors.white, fontSize: 20.0,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
-                color: Colors.blueAccent[400],
+                color: Color.fromRGBO(40, 53, 146, 6),
                 padding: const EdgeInsets.all(20.0),
                 onPressed: resetGame,
               ),
