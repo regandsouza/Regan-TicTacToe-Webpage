@@ -18,13 +18,27 @@ class HomeView extends StatelessWidget {
             NavigationBar(),
 
             Expanded(
+              flex: 3,
               child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 CourseDetails(),
 
                 Expanded(
-                    child: HomePage())
+                  flex: 2,
+                    child: HomePage()),
+
+                Expanded(
+                  flex: 1,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 16.0),
+                    child: Container(
+                      width: 40,
+                      height: 475,
+                      color: Colors.grey[300],
+                    ),
+                  ),
+                )
 
               ],
             ),),

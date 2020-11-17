@@ -10,12 +10,13 @@ class CourseDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         width: 600,
+        color: Colors.white,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
 
-            SizedBox(height: 56,),
+            SizedBox(height: 16,),
 
             Text('Regan Dsouza \nTic Tac Toe',
             style: TextStyle(
@@ -25,15 +26,28 @@ class CourseDetails extends StatelessWidget {
             ),
             ),
 
-            SizedBox(height: 26,),
 
             Text('A little game here, try to beat it now cause later it will be upgraded to be stronger than now',
             style: TextStyle(fontSize: 21,
             height: 1.7,
             ),),
 
-            Expanded(child: Center(child: CallToAction('Twitter'),),),
+            SizedBox(height: 12,),
 
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text('Follow me up on  ',
+                  style: TextStyle(
+                    fontSize: 18.8,
+                  ),
+                ),
+
+                Center(child: CallToAction('Twitter'),),
+              ],
+            ),
+
+            SizedBox(height: 2,),
 
           ],
         ),

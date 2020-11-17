@@ -158,7 +158,7 @@ class _HomePageState extends State<HomePage> {
       if (winner == 1) {
         showDialog(
             context: context,
-            builder: (_) => new CustomDialog(" YOU WON",
+            builder: (_) => new CustomDialog("YOU WON",
                 "Try again", resetGame));
       } else {
         showDialog(
@@ -181,7 +181,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.grey[200],
         body: new Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -192,7 +192,7 @@ class _HomePageState extends State<HomePage> {
 
             new Expanded(
               child: new GridView.builder(
-                padding: const EdgeInsets.symmetric(horizontal: 100),
+                padding: const EdgeInsets.symmetric(horizontal: 6),
                 gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
                     childAspectRatio: 1.0,
@@ -222,7 +222,7 @@ class _HomePageState extends State<HomePage> {
             SizedBox(height: 4,),
 
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal:160.0),
+              padding: const EdgeInsets.symmetric(horizontal: 50.0),
               child: new RaisedButton(
                 child: new Text(
                   "Play Again",
