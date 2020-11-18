@@ -6,6 +6,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:regan_web/game_button.dart';
 import 'package:regan_web/custom.dart';
+import 'package:regan_web/home_view.dart';
+import 'package:regan_web/main.dart';
 import 'global.dart' as global;
 
 class HomePage extends StatefulWidget {
@@ -104,11 +106,14 @@ class _HomePageState extends State<HomePage> {
       int winner = checkWinner();
       if (winner == -1) {
         if (buttonsList.every((p) => p.text != "")) {
-          showDialog(
-              context: context,
-              builder: (_) =>
-              new CustomDialog("Game Tied",
-                  "Try Again", resetGame));
+          setState(() {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => HomeView(),
+              ),
+            );
+          });
         } else {
           activePlayer == 2 ? autoPlay() : null;
         }
@@ -198,17 +203,37 @@ class _HomePageState extends State<HomePage> {
 
     if (winner != -1) {
       if (winner == 1) {
-        showDialog(
+          setState(() {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => HomeView(),
+              ),
+            );
+            global.countA++;
+            print(global.countA);
+          });
+       /* showDialog(
             context: context,
             builder: (_) =>
             new CustomDialog("YOU WON",
-                "Try again", resetGame));
+                "Try again", resetGame));*/
       } else {
-        showDialog(
+          setState(() {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => HomeView(),
+              ),
+            );
+            global.countB++;
+            print(global.countB);
+          });
+       /*showDialog(
             context: context,
             builder: (_) =>
             new CustomDialog("YOU LOST",
-                "Try again, you got it this time", resetGame));
+                "Try again, you got it this time", resetGame));*/
       }
     }
 
@@ -280,7 +305,18 @@ class _HomePageState extends State<HomePage> {
                 ),
                 color: Color.fromRGBO(40, 53, 146, 6),
                 padding: const EdgeInsets.all(20.0),
-                onPressed: resetGame,
+                onPressed: (){
+                  setState(() {
+                    global.countA = 0;
+                    global.countB = 0;
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => HomeView(),
+                      ),
+                    );
+                  });
+                },
               ),
             ),
 
