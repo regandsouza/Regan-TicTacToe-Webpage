@@ -61,7 +61,6 @@ class _CourseDetailsState extends State<CourseDetails> {
                     fontSize: 18.8,
                   ),
                 ),
-
                 Center(child: CallToAction('Twitter'),),
               ],
             ),
