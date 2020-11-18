@@ -1,5 +1,5 @@
 
-//hte tic tac toe game is studied from a youtube video
+//the tic tac toe game is studied from a youtube video
 
 import 'dart:math';
 
