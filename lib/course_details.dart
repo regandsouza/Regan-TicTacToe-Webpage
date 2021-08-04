@@ -48,7 +48,7 @@ class _CourseDetailsState extends State<CourseDetails> {
             ),
 
 
-            Text('A little game here, try to beat it now cause later it will be upgraded to be stronger than now',
+            Text('Still Working on Personal Website, for now enjoy the little game of Tic Tac Toe',
             style: TextStyle(fontSize: 21,
             height: 1.7,
             ),),
